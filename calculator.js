@@ -8,7 +8,7 @@ LAB SETUP INSTRUCTIONS
 ===================================================================
 
 1. Navigate to the project root folder (if you are not in root directory):
-   Open your terminal and run:
+   operationen your terminal and run:
       cd 6-1-node-npm-Dromarjh-main
 
 2. Initialize npm project (if not already done):
@@ -23,7 +23,7 @@ LAB SETUP INSTRUCTIONS
 
    If your system blocks running npm commands (especially on Windows PowerShell),
    run this command first to allow script execution:
-      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+      Set-ExecutionPolicy -Scoperatione Process -ExecutionPolicy Bypass
 
 ===================================================================
 TODO 1: Import Required Modules (in calculator.js)
@@ -31,53 +31,53 @@ TODO 1: Import Required Modules (in calculator.js)
 Goal: Import the modules and npm package you'll need.
 
 Hints:
-- Import the operation functions from "./utils/operations.js"
+- Import the operationeration functions from "./utils/operationerations.js"
 - Import the parser functions from "./utils/parser.js"
 - Import lodash (the third-party package you installed)
 
 Example:
-  import { add, subtract } from "./utils/operations.js";
+  import { add, subtract } from "./utils/operationerations.js";
   import { parseNumbers, isValidOperation } from "./utils/parser.js";
   import _ from "lodash";
 
 ===================================================================
 TODO 2: Parse Command Line Arguments (in calculator.js)
 ===================================================================
-Goal: Extract the operation and numbers from command line arguments.
+Goal: Extract the operationeration and numbers from command line arguments.
 
 Hints:
 - Use process.argv to get command line arguments
 - process.argv is an array where:
   - process.argv[0] is the path to Node.js
   - process.argv[1] is the path to your script
-  - process.argv[2] is the first argument (operation)
+  - process.argv[2] is the first argument (operationeration)
   - process.argv[3+] are the numbers
 
 Example:
-  const operation = process.argv[2];
+  const operationeration = process.argv[2];
   const numbers = process.argv.slice(3);
 
 ===================================================================
 TODO 3: Validate Input and Calculate (in calculator.js)
 ===================================================================
-Goal: Validate the operation and numbers, then perform the calculation.
+Goal: Validate the operationeration and numbers, then perform the calculation.
 
 Hints:
-- Check if operation is valid using isValidOperation()
+- Check if operationeration is valid using isValidOperation()
 - Parse the numbers using parseNumbers()
-- Use a switch statement or if/else to call the appropriate operation function
+- Use a switch statement or if/else to call the approperationriate operationeration function
 - Display the result using console.log()
 
 Example structure:
-  if (!isValidOperation(operation)) {
-    console.log("Invalid operation. Use: add, subtract, multiply, or divide");
+  if (!isValidOperation(operationeration)) {
+    console.log("Invalid operationeration. Use: add, subtract, multiply, or divide");
     return;
   }
 
   const nums = parseNumbers(numbers);
   let result;
 
-  switch (operation) {
+  switch (operationeration) {
     case "add":
       result = add(nums);
       break;
@@ -87,13 +87,13 @@ Example structure:
   console.log(`Result: ${result}`);
 
 ===============================================================
-TODO 4: Create Math Operation Functions (in utils/operations.js)
+TODO 4: Create Math operationeration Functions (in utils/operationerations.js)
 ===============================================================
-Goal: Implement functions that perform mathematical operations on arrays of numbers.
+Goal: Implement functions that perform mathematical operationerations on arrays of numbers.
 
 TODO 4.1: Add Function
 - Calculate the sum of all numbers in the array
-- Use Array.reduce() or a loop
+- Use Array.reduce() or a looperation
 
 TODO 4.2: Subtract Function
 - Start with the first number, subtract all others
@@ -138,18 +138,18 @@ Example:
     return _.compact(numbers);
   }
 
-TODO 5.2: Validate Operation Function
-- Check if the operation is one of: "add", "subtract", "multiply", "divide"
-- Use lodash's _.includes() to check if the operation is in the valid operations array
+TODO 5.2: Validate operationeration Function
+- Check if the operationeration is one of: "add", "subtract", "multiply", "divide"
+- Use lodash's _.includes() to check if the operationeration is in the valid operationerations array
 
 Hints:
 - _.includes(array, value) checks if a value exists in an array
-- Create an array of valid operations: ["add", "subtract", "multiply", "divide"]
+- Create an array of valid operationerations: ["add", "subtract", "multiply", "divide"]
 
 Example:
-  export function isValidOperation(operation) {
-    const validOps = ["add", "subtract", "multiply", "divide"];
-    return _.includes(validOps, operation);
+  export function isValidOperation(operationeration) {
+    const validoperations = ["add", "subtract", "multiply", "divide"];
+    return _.includes(validoperations, operationeration);
   }
 
 ===============================================================
@@ -171,6 +171,42 @@ After completing all TODOs, test your calculator:
   Expected output: Result: 2
 
   node calculator.js invalid 1 2 3
-  Expected output: Invalid operation. Use: add, subtract, multiply, or divide
+  Expected output: Invalid operationeration. Use: add, subtract, multiply, or divide
 
 */
+
+import { add, subtract, multiply, divide } from "./utils/operations.js";
+import { parseNumbers, isValidOperation } from "./utils/parser.js";
+import _ from "lodash";
+
+const operationeration = process.argv[2];
+const numbers = process.argv.slice(3);
+
+if (!isValidOperation(operationeration)) {
+  console.log(
+    "Invalid operationeration. Use: add, subtract, multiply, or divide"
+  );
+  process.exit(1);
+}
+
+const nums = parseNumbers(numbers);
+let result;
+switch (operationeration) {
+  case "add":
+    result = add(nums);
+    break;
+
+  case "subtract":
+    result = subtract(nums);
+    break;
+
+  case "multiply":
+    result = multiply(nums);
+    break;
+
+  case "divide":
+    result = divide(nums);
+    break;
+}
+
+console.log(`Result: ${result}`);

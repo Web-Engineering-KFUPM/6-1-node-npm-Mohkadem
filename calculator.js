@@ -174,3 +174,38 @@ After completing all TODOs, test your calculator:
   Expected output: Invalid operation. Use: add, subtract, multiply, or divide
 
 */
+
+import { add, subtract, multiply, divide } from "./utils/operations.js";
+import { parseNumbers, isValidOperation } from "./utils/parser.js";
+import _ from "lodash";
+
+const operation = process.argv[2];
+const numbers = process.argv.slice(3);
+
+if (!isValidOperation(operation)) {
+  console.log("Invalid operation. Use: add, subtract, multiply, or divide");
+  process.exit(1);
+}
+
+const nums = parseNumbers(numbers);
+let result;
+
+switch (operation) {
+  case "add":
+    result = add(nums);
+    break;
+
+  case "sub":
+    result = add(nums);
+    break;
+
+  case "mul":
+    result = add(nums);
+    break;
+
+  case "div":
+    result = add(nums);
+    break;
+}
+
+console.log(`Result: ${result}`);
